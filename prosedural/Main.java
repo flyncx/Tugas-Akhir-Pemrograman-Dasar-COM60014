@@ -121,7 +121,7 @@ class Main {
     private static int hitungTarif(int jarakMeter) {
         int baseTarif = 3000;
         int tarifPer10Kilo = 0;
-        if (jarakMeter > 25) {
+        if (jarakMeter > 25_000) {
             int jarakPerSepuluhKilo = (int) Math.ceil((jarakMeter - 25_000) / 10_000d);
             tarifPer10Kilo = jarakPerSepuluhKilo * 1000;
         }

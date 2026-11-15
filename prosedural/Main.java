@@ -223,7 +223,7 @@ class Main {
         graph.get(stasiunKedua).put(stasiunPertama, jarakMeter);
     }
 
-    // Adaptasi dari https://jdanray.github.io/post/dijkstra/
+    
     static int hitungJarak(
             Map<String, Map<String, Integer>> graph,
             String start,

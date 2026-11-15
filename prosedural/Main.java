@@ -30,16 +30,12 @@ class Main {
                     System.out.println("Program keluar.");
                     break;
                 case 1: {
-                    Map<String, Map<String, Integer>> graph = new HashMap<>();
-                    addLinCikarang(graph);
-                    menuCetakLin(graph, "Cikarang");
+                    menuCetakLinCikarang();
                     break;
                 }
 
                 case 2: {
-                    Map<String, Map<String, Integer>> graph = new HashMap<>();
-                    addLinJakartaKota(graph);
-                    menuCetakLin(graph, "Jakarta Kota");
+                    menuCetakLinJakartaKota();
                     break;
                 }
                 
@@ -85,6 +81,18 @@ class Main {
 
         System.out.printf("Jarak = %d meter\n", jarak);
         System.out.printf("Tarif = Rp%d\n", tarif);
+    }
+
+    private static void menuCetakLinCikarang(){
+        Map<String, Map<String, Integer>> graph = new HashMap<>();
+        addLinCikarang(graph);
+        menuCetakLin(graph, "Cikarang");
+    }
+
+    private static void menuCetakLinJakartaKota(){
+        Map<String, Map<String, Integer>> graph = new HashMap<>();
+        addLinJakartaKota(graph);
+        menuCetakLin(graph, "Jakarta Kota");
     }
 
     private static void menuCetakLin(

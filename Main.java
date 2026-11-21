@@ -35,9 +35,9 @@ class Main {
     double berat;
     double beratTotal = 0;
     int nomor;
-    System.out.println("Masukkan nama pelanggan: ");
+    System.out.print("Masukkan nama pelanggan: ");
     String nama = scanner.nextLine();
-    System.out.println("Masukkan jumlah cucian: ");
+    System.out.print("Masukkan jumlah cucian : ");
     int jml = scanner.nextInt();
     for(int i=0; i<jml; i++){
       nomor = i+1;

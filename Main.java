@@ -16,7 +16,7 @@ class Main {
         case 0:
           break;
         case 1:
-          lakukanTransaksiBaru();
+          lakukanTransaksiBaru(scanner);
       }
       System.out.println("");
 
@@ -30,8 +30,7 @@ class Main {
     
   }
 
-  private static void lakukanTransaksiBaru(){
-    Scanner scanner = new Scanner(System.in);
+  private static void lakukanTransaksiBaru(Scanner scanner){
     double berat;
     double beratTotal = 0;
     int nomor;

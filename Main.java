@@ -10,6 +10,7 @@ class Main {
       cetakMenu();
       System.out.print("Masukkan pilihan Anda: ");
       pilihanOpsi = scanner.nextInt();
+      scanner.nextLine(); 
       System.out.println("");
 
       switch(pilihanOpsi){

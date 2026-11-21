@@ -46,6 +46,13 @@ class Main {
       beratTotal += berat;
     }
     beratTotal/=1000;
+    if(beratTotal<1 && beratTotal>0){
+      beratTotal=1;
+    } 
+    if(beratTotal<=0){
+      System.out.println("berat tidak valid");
+      return;
+    }
 
     double harga = beratTotal*8000;
     System.out.println("Total harga adalah Rp"+harga);

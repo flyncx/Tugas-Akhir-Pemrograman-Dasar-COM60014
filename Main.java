@@ -41,10 +41,12 @@ class Main {
     int jml = scanner.nextInt();
     for(int i=0; i<jml; i++){
       nomor = i+1;
-      System.out.print("berat cucian ke "+nomor+" : ");
+      System.out.print("berat cucian ke "+nomor+" (gram): ");
       berat = scanner.nextDouble();
       beratTotal += berat;
     }
+    beratTotal/=1000;
+
     double harga = beratTotal*8000;
     System.out.print("Total harga adalah Rp"+harga+" Silahkan lakukan pembayaran : ");
     double bayar = scanner.nextDouble();

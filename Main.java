@@ -95,6 +95,11 @@ class Main {
     }
     selisih = bayar-harga;
     System.out.println("Pembayaran berhasil");
+    
+    cetakStruk(nama, beratTotal, harga, selisih);
+  }
+
+  private static void cetakStruk(String nama, double beratTotal, double harga, double selisih){
     System.out.println("Atas nama : "+nama);
     System.out.println("Total berat : "+beratTotal+"kg");
     System.out.println("Total harga : Rp"+harga);

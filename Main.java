@@ -48,14 +48,17 @@ class Main {
     beratTotal/=1000;
 
     double harga = beratTotal*8000;
-    System.out.print("Total harga adalah Rp"+harga+" Silahkan lakukan pembayaran : ");
+    System.out.println("Total harga adalah Rp"+harga);
+    System.out.print("Silahkan masukkan uang : ");
     double bayar = scanner.nextDouble();
     double selisih=0;
     boolean gagal = bayar < harga;
     if (gagal){
       do{
         selisih=harga-bayar;
-        System.out.println("Saldo anda kurang Rp"+selisih+" silahkan melakukan pembayaran lagi");
+        System.out.println("");
+        System.out.println("Uang diberikan kurang Rp"+selisih);
+        System.out.print("Silahkan masukkan uang (lagi): ");
         bayar += scanner.nextDouble();
       }while(bayar<harga);
     }

@@ -7,11 +7,11 @@ public class Main {
             new Resep("Caffè Latte", 18, 180, 240)
         };
 
-        MesinKopi mesinKopi = new MesinKopi(100, 100, 1000, 6);
+        MesinKopi mesinKopi = new MesinKopi(100, 100, 1000, 5000, 6);
 
         // Buat pesanan kopi susu dengna gula sedang
 
-        Pesanan pesananKopiSusu = new Pesanan(50, 500, 50);
+        Pesanan pesananKopiSusu = new Pesanan(arrayResep[0], 25);
 
         boolean statusPesananSukses = mesinKopi.buatKopi(pesananKopiSusu);
 

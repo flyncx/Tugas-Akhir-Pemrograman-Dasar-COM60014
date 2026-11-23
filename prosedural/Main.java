@@ -11,7 +11,7 @@ class Main {
       System.out.print("Masukkan pilihan Anda: ");
       pilihanOpsi = scanner.nextInt();
       scanner.nextLine(); 
-      System.out.println("");
+      System.out.println();
 
       switch(pilihanOpsi){
         case 0:
@@ -23,7 +23,7 @@ class Main {
           System.out.println("Pilihan tidak valid");
           break;
       }
-      System.out.println("");
+      System.out.println();
 
     }while(pilihanOpsi!=0);
   }
@@ -32,37 +32,44 @@ class Main {
     System.out.println("===[Menu Program]===");
     System.out.println("1. Lakukan transaksi baru");
     System.out.println("0. Keluar program");
-    
   }
 
   private static void lakukanTransaksiBaru(Scanner scanner){
-    double berat;
-    double beratTotal = 0;
-    int nomor;
-    System.out.print("Masukkan nama pelanggan: ");
+        System.out.print("Masukkan nama pelanggan: ");
     String nama = scanner.nextLine();
+    
     System.out.print("Masukkan jumlah cucian : ");
     int jml = scanner.nextInt();
+    
     if(jml<1){
       System.out.println("jumlah tidak valid");
       return;
     }
+    
+    double beratTotalGram = 0;
+    
     for(int i=0; i<jml; i++){
-      nomor = i+1;
+      int nomor = i + 1;
       System.out.print("berat cucian ke "+nomor+" (gram): ");
-      berat = scanner.nextDouble();
-      beratTotal += berat;
+      double berat = scanner.nextDouble();
+      if(berat>0 == false){
+        i--; // AGAR BERAT KE-i DITANYAKAN ULANG
+        System.out.printf("Berat cucian ke-%d invalid!\n");
+      }else{
+        beratTotalGram += berat;  
+      }
     }
-    beratTotal/=1000;
-    if(beratTotal<1 && beratTotal>0){
-      beratTotal=1;
+    double beratTotalKilogram = beratTotalGram / 1000;
+    // JIKA x berada di 0<x<1 bulatkan ke 1
+    if(beratTotalKilogram<1 && beratTotalKilogram>0){
+      beratTotalKilogram=1;
     } 
-    if(beratTotal<=0){
+    if(beratTotalKilogram>0 == false){
       System.out.println("berat tidak valid");
       return;
     }
 
-    double harga = beratTotal*8000;
+    double harga = beratTotalKilogram*8000;
     System.out.println("Total harga adalah Rp"+harga);
     System.out.print("Silahkan masukkan uang : ");
     double bayar = scanner.nextDouble();
@@ -93,10 +100,11 @@ class Main {
         bayar += tambahan;
       }while(bayar<harga);
     }
+    
     selisih = bayar-harga;
     System.out.println("Pembayaran berhasil");
     
-    cetakStruk(nama, beratTotal, harga, selisih);
+    cetakStruk(nama, beratTotalKilogram, harga, selisih);
   }
 
   private static void cetakStruk(String nama, double beratTotal, double harga, double selisih){

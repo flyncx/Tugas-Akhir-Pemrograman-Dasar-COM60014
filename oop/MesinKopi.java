@@ -3,7 +3,7 @@ public class MesinKopi {
     private int sisaSusuMililiter;
     private int sisaKopiGram;
     private int sisaAirMililiter;
-    private int sisaPembuatan;
+    private int sisaSiklusPerawatan;
 
     private boolean ok = true; 
     
@@ -12,7 +12,7 @@ public class MesinKopi {
         this.sisaSusuMililiter = susuMililiter;
         this.sisaKopiGram = kopiGram;
         this.sisaAirMililiter = airMililiter;
-        this.sisaPembuatan = jmlhPembuatan;
+        this.sisaSiklusPerawatan = jmlhPembuatan;
         
     }
 
@@ -24,16 +24,16 @@ public class MesinKopi {
         boolean kopiCukup = this.sisaKopiGram-resep.getKopiGram()>=0;
         boolean gulaCukup = this.sisaGulaGram-pesanan.getJumlahGulaGram()>=0;  
         boolean susuCukup = this.sisaSusuMililiter-resep.getSusuMl()>=0;
-        boolean masihBisaBuat = (this.sisaPembuatan-1) >= 0;
+        boolean siklusPerawatanAman = (this.sisaSiklusPerawatan-1) >= 0;
 
-        System.out.printf("air=%b kopi=%b gula=%b susu=%b mbb=%b\n", airCukup, kopiCukup, gulaCukup, susuCukup, masihBisaBuat);
+        System.out.printf("air=%b kopi=%b gula=%b susu=%b mbb=%b\n", airCukup, kopiCukup, gulaCukup, susuCukup, siklusPerawatanAman);
 
-        if(airCukup && kopiCukup && gulaCukup && susuCukup && masihBisaBuat){
+        if(airCukup && kopiCukup && gulaCukup && susuCukup && siklusPerawatanAman){
             this.sisaAirMililiter = this.sisaAirMililiter - resep.getAirMililiter();
             this.sisaKopiGram = this.sisaKopiGram - resep.getKopiGram();
             this.sisaGulaGram = this.sisaGulaGram - pesanan.getJumlahGulaGram();
             this.sisaSusuMililiter = this.sisaSusuMililiter - resep.getSusuMl();
-            this.sisaPembuatan = this.sisaPembuatan - 1;
+            this.sisaSiklusPerawatan = this.sisaSiklusPerawatan - 1;
             return true;
         }
         this.ok = false;

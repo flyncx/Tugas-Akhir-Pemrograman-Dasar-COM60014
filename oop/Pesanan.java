@@ -13,7 +13,7 @@ public class Pesanan {
         return this.resep;
     }
     public int getJumlahGulaGram(){
-        return GRAM_GULA_PER_LEVEL * this.levelGula;
+        return this.GRAM_GULA_PER_LEVEL * this.levelGula;
     } 
 
     public static boolean cekLevelGulaValid(int level) {

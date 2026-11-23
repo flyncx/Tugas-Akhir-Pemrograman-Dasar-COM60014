@@ -69,48 +69,42 @@ class Main {
       return;
     }
 
-    double harga = beratTotalKilogram*8000;
-    System.out.println("Total harga adalah Rp"+harga);
-    System.out.print("Silahkan masukkan uang : ");
-    double bayar = scanner.nextDouble();
-    if(bayar<1){
-      do{
-        System.out.println("");
-        System.out.print("pembayaran tidak valid tolong ulangi pembayaran : ");
-        bayar = scanner.nextDouble();
-      }while(bayar<1);
+    // Berat dibulatkan ke atas
+    double harga = Math.ceil(beratTotalKilogram) * 8000; 
+
+    double pembayaranPertama = scanner.nextDouble();
+    double kurang = 0;
+
+    // uang pas
+    if(harga - pembayaranPertama == 0){
+      System.out.println("Pembayaran berhasil");
+      cetakStruk(nama, beratTotalKilogram, harga, 0); 
     }
-    double selisih=0;
-    double tambahan=0;
-    boolean gagal = bayar < harga;
-    if (gagal){
-      do{
-        selisih=harga-bayar;
-        System.out.println("");
-        System.out.println("Uang diberikan kurang Rp"+selisih);
-        System.out.print("Silahkan masukkan uang (lagi): ");
-        tambahan = scanner.nextDouble();
-        if(tambahan<1){
-          do{
-            System.out.println("");
-            System.out.print("pembayaran tidak valid tolong ulangi pembayaran : ");
-            tambahan = scanner.nextDouble();
-          }while(tambahan<1);
-        }
-        bayar += tambahan;
-      }while(bayar<harga);
+    // uang kelebihan
+    else if(harga-pembayaranPertama > 0){
+      System.out.println("Pembayaran berhasil");
+      cetakStruk(nama, beratTotalKilogram, harga, harga-pembayaranPertama);
     }
-    
-    selisih = bayar-harga;
-    System.out.println("Pembayaran berhasil");
-    
-    cetakStruk(nama, beratTotalKilogram, harga, selisih);
+    // uang kurang 
+    // NOTE: diberi kesempatan kedua untuk membayar uang yang kurang
+    else {
+      kurang = harga-pembayaranPertama;
+      System.out.println("Pembayaran gagal");
+      System.out.printf("Uang diberikan kurang Rp%d\n", (int)kurang);
+      System.out.print("Silahkan masukkan uang (lagi): ");     
+      
+      // Jika masih kurang, keluar program.
+      if(harga-pembayaranPertama+kurang < 0){
+        System.out.println("Pembayaran masih kurang, program terhenti");
+        return;
+      }
+    }
   }
 
-  private static void cetakStruk(String nama, double beratTotal, double harga, double selisih){
+  private static void cetakStruk(String nama, double beratTotal, double harga, double kembalian){
     System.out.println("Atas nama : "+nama);
     System.out.println("Total berat : "+beratTotal+"kg");
     System.out.println("Total harga : Rp"+harga);
-    System.out.println("Kembalian : Rp"+selisih);
+    System.out.println("Kembalian : Rp"+kembalian);
   }
 }

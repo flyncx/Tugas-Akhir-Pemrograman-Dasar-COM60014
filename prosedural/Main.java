@@ -74,18 +74,22 @@ class Main {
     // Berat dibulatkan ke atas
     double harga = Math.ceil(beratTotalKilogram) * 8000; 
 
+    System.out.printf("Harga yang perlu dibayar: %d\n", (int)harga);
+
+    System.out.print("Masukkan uang: ");
     double pembayaranPertama = scanner.nextDouble();
+
+    if(pembayaranPertama <= 0){
+      System.out.println("Jumlah uang invalid");
+      return;
+    }
+
     double kurang = 0;
 
-    // uang pas
-    if(harga - pembayaranPertama == 0){
+    // uang pas atau lebih
+    if(harga - pembayaranPertama <= 0){
       System.out.println("Pembayaran berhasil");
-      cetakStruk(nama, beratTotalKilogram, harga, 0); 
-    }
-    // uang kelebihan
-    else if(harga-pembayaranPertama > 0){
-      System.out.println("Pembayaran berhasil");
-      cetakStruk(nama, beratTotalKilogram, harga, harga-pembayaranPertama);
+      cetakStruk(nama, beratTotalKilogram, harga, pembayaranPertama-harga);
     }
     // uang kurang 
     // NOTE: diberi kesempatan kedua untuk membayar uang yang kurang
@@ -94,12 +98,20 @@ class Main {
       System.out.println("Pembayaran gagal");
       System.out.printf("Uang diberikan kurang Rp%d\n", (int)kurang);
       System.out.print("Silahkan masukkan uang (lagi): ");     
-      
-      // Jika masih kurang, keluar program.
-      if(harga-pembayaranPertama+kurang < 0){
-        System.out.println("Pembayaran masih kurang, program terhenti");
+      double tambahan = scanner.nextDouble(); 
+
+      if(tambahan <= 0){
+        System.out.println("Jumlah uang invalid");
         return;
       }
+
+      // Jika masih kurang, keluar prosedur.
+      if(tambahan-kurang < 0){
+        System.out.println("Pembayaran masih kurang, silahkan lakukan transaksi ulang!");
+        return;
+      }
+
+      cetakStruk(nama, beratTotalKilogram, harga, kurang-tambahan);
     }
   }
 

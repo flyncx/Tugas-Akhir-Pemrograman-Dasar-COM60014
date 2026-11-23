@@ -2,10 +2,13 @@ public class Pesanan {
     private Resep resep; 
     private boolean selesai;
 
-    private int jumlahGulaGram;
+    private int GRAM_GULA_PER_LEVEL = 5;
+    private int levelGula;
 
-    public Pesanan(Resep resep, int gulaGram){
+    public Pesanan(Resep resep, int levelGula){
         this.resep = resep;
+        this.levelGula = levelGula;
+
     }
 
     public Resep getResep(){
@@ -15,7 +18,7 @@ public class Pesanan {
         return this.selesai;
     }
     public int getJumlahGulaGram(){
-        return this.jumlahGulaGram;
+        return GRAM_GULA_PER_LEVEL * this.levelGula;
     } 
 
 

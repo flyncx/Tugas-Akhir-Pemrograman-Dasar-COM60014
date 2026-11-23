@@ -16,7 +16,13 @@ public class Main {
             new Resep("Piccolo Latte", 14, 80, 110)
         };
 
-        MesinKopi mesinKopi = new MesinKopi(100, 100, 1000, 5000, 6);
+        MesinKopi mesinKopi = new MesinKopi(
+            300, // kopi gr
+            2000, // susu gr 
+            1000, // gula gr
+            3000, // air gr
+            10
+        );
 
     
         int pilihanMenu = 0;

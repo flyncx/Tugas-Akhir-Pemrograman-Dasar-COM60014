@@ -35,7 +35,7 @@ class Main {
   }
 
   private static void lakukanTransaksiBaru(Scanner scanner){
-        System.out.print("Masukkan nama pelanggan: ");
+    System.out.print("Masukkan nama pelanggan: ");
     String nama = scanner.nextLine();
     
     System.out.print("Masukkan jumlah cucian : ");

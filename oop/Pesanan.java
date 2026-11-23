@@ -19,7 +19,14 @@ public class Pesanan {
     } 
 
 
+
     public void setStatusSelesai(boolean status){
         this.selesai = status;
+    }
+
+
+    public static boolean cekLevelGulaValid(int level) {
+        if(1<=level && level<=5) return true;
+        return false;
     }
 }

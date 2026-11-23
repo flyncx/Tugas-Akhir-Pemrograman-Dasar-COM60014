@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
 
         Resep[] arrayResep = {
             new Resep("Espresso Double", 18, 0, 60),
@@ -9,15 +13,75 @@ public class Main {
 
         MesinKopi mesinKopi = new MesinKopi(100, 100, 1000, 5000, 6);
 
-        // Buat pesanan kopi susu dengna gula sedang
+    
+        int pilihanMenu = 0;
 
-        Pesanan pesananKopiSusu = new Pesanan(arrayResep[0], 25);
+        do {
 
-        boolean statusPesananSukses = mesinKopi.buatKopi(pesananKopiSusu);
+            if(mesinKopi.getOK() == false){
+                System.out.println("Maaf, mesin kopi memerlukan maintenance");
+                break;
+            }
 
-        if(statusPesananSukses == true){
-            System.out.println("Pesanan sudah siap");
-            System.out.println("Silahkan dinikmati");
+            cetakMenu(arrayResep);
+            System.out.println();
+            System.out.print("Pilih nomor: ");
+            pilihanMenu = scanner.nextInt();
+            System.out.println();
+            
+            if(pilihanMenu == 0){
+                System.out.println("Program selesai");
+                break;
+            }
+
+            if(1<=pilihanMenu && pilihanMenu <= arrayResep.length){
+                Resep resep = arrayResep[pilihanMenu-1];
+                System.out.printf("Memilih resep %s\n", resep.getNama());
+                System.out.print("Masukkan level gula (1-5): ");
+                int levelGula = scanner.nextInt();
+
+                if(Pesanan.cekLevelGulaValid(levelGula)){
+                    System.out.printf("Dengan level gula %d\n", levelGula);
+                    
+                }else{
+                    System.out.println("Level gula tidak valid!");
+                    break;
+                }
+
+                System.out.println();
+
+                Pesanan pesanan = new Pesanan(resep, levelGula);
+                boolean statusOK = mesinKopi.buatKopi(pesanan);
+
+                System.out.println("[boongannya sfx mesin kopi]");
+
+                if(statusOK) {
+
+                    System.out.println("Pesanan sudah siap");
+                    System.out.println("Silahkan dinikmati");
+                }
+                else {
+                    System.out.println("Maaf, mesin kopi memerlukan maintenance");
+                    break;
+                }
+                
+            }else{
+                System.out.println("Pilihan tidak valid!");
+                System.out.println();
+                
+            }
+
+        } while (pilihanMenu != 0);
+    }
+    
+    private static void cetakMenu(Resep[] arrayResep){
+        System.out.println("===[Pilihan Menu]===");
+        System.out.println("0 :: Keluar Menu");
+        for (int i = 0; i < arrayResep.length; i++) {
+            Resep resep = arrayResep[i];
+            System.out.printf("%d :: %s\n", i+1, resep.getNama());
         }
+        System.out.println(".");
+        
     }
 }

@@ -3,14 +3,16 @@ public class MesinKopi {
     private int sisaSusuMililiter;
     private int sisaKopiGram;
     private int sisaAirMililiter;
-    private int sisaKuotaSebelumMaintenance;
+    private int sisaPembuatan;
+
+    private boolean ok = true; 
     
-    public MesinKopi(int kopiGram, int susuMililiter, int gulaGram, int sisaAirMililiter, int sisaKuotaSebelumMaintenance){
+    public MesinKopi(int kopiGram, int susuMililiter, int gulaGram, int sisaAirMililiter, int sisaPembuatan){
         this.sisaGulaGram = gulaGram;
         this.sisaSusuMililiter = susuMililiter;
         this.sisaKopiGram = kopiGram;
-        this.sisaAirMililiter = sisaSusuMililiter;
-        this.sisaKuotaSebelumMaintenance = sisaKuotaSebelumMaintenance;
+        this.sisaAirMililiter = sisaAirMililiter;
+        this.sisaPembuatan = sisaPembuatan;
         
     }
 
@@ -22,19 +24,23 @@ public class MesinKopi {
         boolean kopiCukup = this.sisaKopiGram-resep.getKopiGram()>=0;
         boolean gulaCukup = this.sisaGulaGram-pesanan.getJumlahGulaGram()>=0;  
         boolean susuCukup = this.sisaSusuMililiter-resep.getSusuMl()>=0;
-        boolean tidakMaintenance = (this.sisaKuotaSebelumMaintenance-1) >= 0;
+        boolean masihBisaBuat = (this.sisaPembuatan-1) >= 0;
 
-        System.out.printf("DEBUG: %b %b %b %b %b\n", airCukup, kopiCukup, gulaCukup, susuCukup,tidakMaintenance);
+        System.out.printf("air=%b kopi=%b gula=%b susu=%b mbb=%b\n", airCukup, kopiCukup, gulaCukup, susuCukup, masihBisaBuat);
 
-        if(airCukup && kopiCukup && gulaCukup && susuCukup && tidakMaintenance){
+        if(airCukup && kopiCukup && gulaCukup && susuCukup && masihBisaBuat){
             this.sisaAirMililiter = this.sisaAirMililiter - resep.getAirMililiter();
             this.sisaKopiGram = this.sisaKopiGram - resep.getKopiGram();
             this.sisaGulaGram = this.sisaGulaGram - pesanan.getJumlahGulaGram();
             this.sisaSusuMililiter = this.sisaSusuMililiter - resep.getSusuMl();
-            this.sisaKuotaSebelumMaintenance = this.sisaKuotaSebelumMaintenance - 1;
+            this.sisaPembuatan = this.sisaPembuatan - 1;
             return true;
         }
-
+        this.ok = false;
         return false;
+    }
+
+    public boolean getOK() {
+        return this.ok;
     }
 }

@@ -25,7 +25,7 @@ public class MesinKopi {
         boolean susuCukup = this.sisaSusuMililiter-resep.getSusuMl()>=0;
         boolean siklusPerawatanAman = (this.sisaSiklusPerawatan-1) >= 0;
 
-        System.out.printf("air=%b kopi=%b gula=%b susu=%b mbb=%b\n", airCukup, kopiCukup, gulaCukup, susuCukup, siklusPerawatanAman);
+        // System.out.printf("air=%b kopi=%b gula=%b susu=%b mbb=%b\n", airCukup, kopiCukup, gulaCukup, susuCukup, siklusPerawatanAman);
 
         if(airCukup && kopiCukup && gulaCukup && susuCukup && siklusPerawatanAman){
             this.sisaAirMililiter = this.sisaAirMililiter - resep.getAirMililiter();
@@ -43,3 +43,5 @@ public class MesinKopi {
         return this.ok;
     }
 }
+
+

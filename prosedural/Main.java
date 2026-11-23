@@ -48,17 +48,19 @@ class Main {
     
     double beratTotalGram = 0;
     
-    for(int i=0; i<jml; i++){
-      int nomor = i + 1;
+    int indexCucian = 0;
+    while(indexCucian<jml){
+      int nomor = indexCucian + 1;
       System.out.print("berat cucian ke "+nomor+" (gram): ");
       double berat = scanner.nextDouble();
       if(berat>0 == false){
-        i--; // AGAR BERAT KE-i DITANYAKAN ULANG
-        System.out.printf("Berat cucian ke-%d invalid!\n");
+        System.out.printf("Berat cucian ke-%d invalid!\n", nomor);
       }else{
-        beratTotalGram += berat;  
+        beratTotalGram += berat;
+        indexCucian++;  
       }
     }
+    
     double beratTotalKilogram = beratTotalGram / 1000;
     // JIKA x berada di 0<x<1 bulatkan ke 1
     if(beratTotalKilogram<1 && beratTotalKilogram>0){

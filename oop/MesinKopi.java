@@ -7,13 +7,12 @@ public class MesinKopi {
 
     private boolean ok = true; 
     
-    public MesinKopi(int kopiGram, int susuMililiter, int gulaGram, int airMililiter, int jmlhPembuatan){
+    public MesinKopi(int kopiGram, int susuMililiter, int gulaGram, int airMililiter, int siklusPerawatan){
         this.sisaGulaGram = gulaGram;
         this.sisaSusuMililiter = susuMililiter;
         this.sisaKopiGram = kopiGram;
         this.sisaAirMililiter = airMililiter;
-        this.sisaSiklusPerawatan = jmlhPembuatan;
-        
+        this.sisaSiklusPerawatan = siklusPerawatan;
     }
 
     public boolean buatKopi(Pesanan pesanan){

@@ -16,7 +16,7 @@ public class MesinKopi {
     }
 
     public boolean buatKopi(Pesanan pesanan){
-        System.out.println("DEBUG: Membuat kopi");
+        // System.out.println("DEBUG: Membuat kopi");
         Resep resep = pesanan.getResep();
 
         boolean airCukup = this.sisaAirMililiter-resep.getAirMililiter()>=0;

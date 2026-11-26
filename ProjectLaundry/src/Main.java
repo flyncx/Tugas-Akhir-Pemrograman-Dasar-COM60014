@@ -1,7 +1,33 @@
 import java.util.Scanner;
 
 public class Main {
-  
+  public static void main(String[] args) {
+    
+    Scanner scanner = new Scanner(System.in);
+    
+    int pilihanOpsi = 0;
+
+    do {
+      cetakMenu();
+      System.out.print("Masukkan pilihan Anda: ");
+      pilihanOpsi = scanner.nextInt();
+      scanner.nextLine(); 
+      System.out.println();
+
+      switch(pilihanOpsi){
+        case 0:
+          break;
+        case 1:
+          lakukanTransaksiBaru(scanner);
+          break;
+        default:
+          System.out.println("Pilihan tidak valid");
+          break;
+      }
+      System.out.println();
+
+    }while(pilihanOpsi!=0);
+  }
 
   private static void cetakMenu(){
     System.out.println("===[Menu Program]===");

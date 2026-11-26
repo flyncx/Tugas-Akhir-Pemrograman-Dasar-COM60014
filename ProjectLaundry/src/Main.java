@@ -46,7 +46,7 @@ class Main {
       return;
     }
     
-    double beratTotalGram = 0;
+    int beratTotalGram = 0;
     
     int indexCucian = 0;
     while(indexCucian<jml){
@@ -61,15 +61,7 @@ class Main {
       }
     }
     
-    double beratTotalKilogram = beratTotalGram / 1000;
-    // JIKA x berada di 0<x<1 bulatkan ke 1
-    if(beratTotalKilogram<1 && beratTotalKilogram>0){
-      beratTotalKilogram=1;
-    } 
-    if(beratTotalKilogram>0 == false){
-      System.out.println("berat tidak valid");
-      return;
-    }
+    double beratTotalKilogram = bulatkanGramKeKilogram(beratTotalGram);
 
     // Berat dibulatkan ke atas
     double harga = Math.ceil(beratTotalKilogram) * 8000; 
@@ -113,6 +105,13 @@ class Main {
 
       cetakStruk(nama, beratTotalKilogram, harga, kurang-tambahan);
     }
+  }
+  
+  private static int bulatkanGramKeKilogram(int gram){
+    double hasilMungkinPecahan = gram / 1000d;
+    // JIKA berat 0.1 kg bulatkan ke 1
+    int hasil = (int) Math.ceil(hasilMungkinPecahan);
+    return hasil;
   }
 
   private static void cetakStruk(String nama, double beratTotal, double harga, double kembalian){

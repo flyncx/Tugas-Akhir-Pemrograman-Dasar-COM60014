@@ -116,9 +116,13 @@ class Main {
   }
 
   private static void cetakStruk(String nama, double beratTotal, double harga, double kembalian){
-    System.out.println("Atas nama : "+nama);
-    System.out.println("Total berat : "+beratTotal+"kg");
-    System.out.println("Total harga : Rp"+harga);
-    System.out.println("Kembalian : Rp"+kembalian);
+    System.out.printf("|=====================|\n");
+    System.out.printf("|     Terima kasih    |\n");
+    System.out.printf("|=====================|\n");
+    System.out.printf("|Atas nama   : %s\n", nama);
+    System.out.printf("|Total berat : %.2f kg\n",beratTotal);
+    System.out.printf("|Total harga : Rp%.2f \n", harga);
+    System.out.printf("|Kembalian   : Rp%.2f \n", kembalian);
+    System.out.printf("|=====================|\n");
   }
 }

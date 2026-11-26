@@ -1,32 +1,7 @@
 import java.util.Scanner;
-class Main {
-  public static void main(String[] args) {
-    
-    Scanner scanner = new Scanner(System.in);
-    
-    int pilihanOpsi = 0;
 
-    do {
-      cetakMenu();
-      System.out.print("Masukkan pilihan Anda: ");
-      pilihanOpsi = scanner.nextInt();
-      scanner.nextLine(); 
-      System.out.println();
-
-      switch(pilihanOpsi){
-        case 0:
-          break;
-        case 1:
-          lakukanTransaksiBaru(scanner);
-          break;
-        default:
-          System.out.println("Pilihan tidak valid");
-          break;
-      }
-      System.out.println();
-
-    }while(pilihanOpsi!=0);
-  }
+public class Main {
+  
 
   private static void cetakMenu(){
     System.out.println("===[Menu Program]===");
@@ -61,50 +36,50 @@ class Main {
       }
     }
     
-    double beratTotalKilogram = bulatkanGramKeKilogram(beratTotalGram);
+    int beratTotalKilogram = bulatkanGramKeKilogram(beratTotalGram);
 
     // Berat dibulatkan ke atas
-    double harga = Math.ceil(beratTotalKilogram) * 8000; 
+    int harga = (int) Math.ceil(beratTotalKilogram) * 8000; 
 
     System.out.printf("Harga yang perlu dibayar: %d\n", (int)harga);
-
+    
     System.out.print("Masukkan uang: ");
-    double pembayaranPertama = scanner.nextDouble();
+    int pembayaranPertama = scanner.nextInt();
 
     if(pembayaranPertama <= 0){
       System.out.println("Jumlah uang invalid");
       return;
     }
-
-    double kurang = 0;
-
     // uang pas atau lebih
     if(harga - pembayaranPertama <= 0){
       System.out.println("Pembayaran berhasil");
-      cetakStruk(nama, beratTotalKilogram, harga, pembayaranPertama-harga);
+      int kembalian = pembayaranPertama - harga;
+      cetakStruk(nama, beratTotalKilogram, harga, kembalian);
+      return;
     }
+    
+    
     // uang kurang 
     // NOTE: diberi kesempatan kedua untuk membayar uang yang kurang
-    else {
-      kurang = harga-pembayaranPertama;
-      System.out.println("Pembayaran gagal");
-      System.out.printf("Uang diberikan kurang Rp%d\n", (int)kurang);
-      System.out.print("Silahkan masukkan uang (lagi): ");     
-      double tambahan = scanner.nextDouble(); 
+    
+    int kurang = harga-pembayaranPertama;
+    System.out.println("Pembayaran gagal");
+    System.out.printf("Uang diberikan kurang Rp%d\n", kurang);
+    System.out.print("Silahkan masukkan uang (lagi): ");     
+    int tambahan = scanner.nextInt(); 
 
-      if(tambahan <= 0){
-        System.out.println("Jumlah uang invalid");
-        return;
-      }
-
-      // Jika masih kurang, keluar prosedur.
-      if(tambahan-kurang < 0){
-        System.out.println("Pembayaran masih kurang, silahkan lakukan transaksi ulang!");
-        return;
-      }
-
-      cetakStruk(nama, beratTotalKilogram, harga, kurang-tambahan);
+    if(tambahan <= 0){
+      System.out.println("Jumlah uang invalid");
+      return;
     }
+
+    // Jika masih kurang, keluar prosedur; transaksi dianggap dicancel.
+    if(tambahan-kurang < 0){
+      System.out.println("Pembayaran masih kurang, silahkan lakukan transaksi ulang!");
+      return;
+    }
+    int kembalian = tambahan-kurang;
+    cetakStruk(nama, beratTotalKilogram, harga, kembalian);
   }
   
   private static int bulatkanGramKeKilogram(int gram){

@@ -9,7 +9,7 @@ public class Main {
             new Resep("Espresso Double", 18, 0, 60),
             new Resep("Americano", 18, 0, 150),
             new Resep("Cappuccino", 18, 120, 180),
-            new Resep("Caffè Latte", 18, 180, 240),
+            new Resep("Caffee Latte", 18, 180, 240),
             new Resep("Flat White", 18, 120, 160),
             new Resep("Mocha Latte", 18, 150, 220),
             new Resep("Caramel Macchiato", 18, 140, 200),

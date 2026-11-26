@@ -6,14 +6,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Resep[] arrayResep = {
+            // nama, kopi (gr), susu (ml), ukuranCangkir
             new Resep("Espresso Double", 18, 0, 60),
             new Resep("Americano", 18, 0, 150),
+            new Resep("Long Black", 20, 0, 200),
             new Resep("Cappuccino", 18, 120, 180),
-            new Resep("Caffee Latte", 18, 180, 240),
-            new Resep("Flat White", 18, 120, 160),
-            new Resep("Mocha Latte", 18, 150, 220),
-            new Resep("Caramel Macchiato", 18, 140, 200),
-            new Resep("Piccolo Latte", 14, 80, 110)
+            new Resep("Flat White", 18, 180, 200),
+            new Resep("Cafee Latte", 20, 210, 300),
+            new Resep("Macchiato", 20, 30, 90)
         };
 
         MesinKopi mesinKopi = new MesinKopi(
@@ -87,11 +87,11 @@ public class Main {
     
     private static void cetakMenu(Resep[] arrayResep){
         System.out.println("===[Pilihan Menu]===");
-        System.out.println("0 :: Keluar Menu");
         for (int i = 0; i < arrayResep.length; i++) {
             Resep resep = arrayResep[i];
             System.out.printf("%d :: %s\n", i+1, resep.getNama());
         }
+        System.out.println("0 :: Keluar Menu");
         System.out.println(".");
         
     }

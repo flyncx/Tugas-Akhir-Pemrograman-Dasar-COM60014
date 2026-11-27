@@ -1,35 +1,52 @@
 public class Resep {
     private String nama;
-    private int takaranKopiGram;
-    private int takaranSusuMililiter;
-    private int ukuranCangkirMililiter;
+    private int kopiGr;
+    private int susuMl;
+    private int takaranSajiMl;
 
+    private int hargaRp;
 
-    public Resep(String nama, int kopiGram, int susuMililiter, int ukuranCangkirMililiter) {
+    // constr
+    public Resep(String nama, int kopiGr, int susuMl, int takaranSajiMl, int hargaRp) {
         this.nama = nama;
-        this.takaranKopiGram = kopiGram;
-        this.takaranSusuMililiter = susuMililiter;
-        this.ukuranCangkirMililiter = ukuranCangkirMililiter;
+        this.kopiGr = kopiGr;
+        this.susuMl = susuMl;
+        this.takaranSajiMl = takaranSajiMl;
+        this.hargaRp = hargaRp;
     }
 
+    // getter
     public String getNama() {
         return nama;
     }
-    public int getKopiGram() {
-        return this.takaranKopiGram;
+    public int getKopiGr() {
+        return this.kopiGr;
     }
     public int getSusuMl() {
-        return this.takaranSusuMililiter;
+        return this.susuMl;
     }
-    public int getUkuranCangkirMl() {
-        return this.ukuranCangkirMililiter;
+    public int getTakaranSajiMl() {
+        return this.takaranSajiMl;
     }
-    private int getKopiMililiter() {
-        // Asumsinya ya 1 gram kopi = 1 mililiter kopi;
-        return this.getKopiGram()*1;
+    public int getHargaRp() {
+        return this.hargaRp;
     }
-    public int getAirMililiter() {
-        System.out.println(this.ukuranCangkirMililiter - this.getKopiMililiter() - this.getSusuMl());
-        return this.ukuranCangkirMililiter - this.getKopiMililiter() - this.getSusuMl();
+    
+
+    // setter
+    public void setNama(String namaBaru) {
+        this.nama = namaBaru;
+    }
+    public void setKopiGr(int kopiGrBaru) {
+        this.kopiGr = kopiGrBaru;
+    }
+    public void setSusuMl(int susuGrBaru) {
+        this.susuMl = susuGrBaru;
+    }
+    public void setTakaranSajiMl(int takaranSajiMlBaru) {
+        this.takaranSajiMl = takaranSajiMlBaru;
+    }
+    public void setHargaRp(int hargaRpBaru){
+        this.hargaRp = hargaRpBaru;
     }
 }

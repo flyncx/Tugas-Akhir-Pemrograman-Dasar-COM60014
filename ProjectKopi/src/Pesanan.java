@@ -32,4 +32,8 @@ public class Pesanan {
         if(1<=level && level<=5) return true;
         return false;
     }
+
+    public int getAirMl(){
+        return 1000; //tar diubah
+    }
 }

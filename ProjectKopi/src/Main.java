@@ -14,9 +14,9 @@ public class Main {
         );
         
         Resep[] resep = {
-            new Resep("A", 100, 100, 300),
-            new Resep("B", 100, 100, 300),
-            new Resep("C", 100, 100, 300),
+            new Resep("A", 100, 100, 300, 10_000),
+            new Resep("B", 100, 100, 300, 11_000),
+            new Resep("C", 100, 100, 300, 12_000),
         };
         
         String namaKafe = "Cawan Pagi";

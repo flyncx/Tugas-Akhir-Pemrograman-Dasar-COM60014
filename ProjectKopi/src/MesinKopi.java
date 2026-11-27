@@ -120,17 +120,17 @@ public class MesinKopi {
         if(this.getSusu() < resep.getSusuMl()){
             return 3;
         }
-        if(this.getKopi() < resep.getKopiGram()){
+        if(this.getKopi() < resep.getKopiGr()){
             return 4;
         }
-        if(this.getAir() < resep.getAirMililiter()){
+        if(this.getAir() < pesanan.getAirMl()){
             return 5;
         }
 
         this.setGula(this.getGula()-pesanan.getJumlahGulaGram());
         this.setSusu(this.getSusu()-resep.getSusuMl());
-        this.setKopi(this.getKopi()-resep.getKopiGram());
-        this.setAir(this.getAir()-resep.getAirMililiter());
+        this.setKopi(this.getKopi()-resep.getKopiGr());
+        this.setAir(this.getAir()-pesanan.getAirMl());
         
         this.kurangiSiklusSebelumPerawatan();
 

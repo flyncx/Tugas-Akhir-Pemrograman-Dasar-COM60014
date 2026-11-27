@@ -1,12 +1,24 @@
 public class Pesanan {
+
+    private String namaPelanggan;
+
+
     private Resep resep; 
 
     private int GRAM_GULA_PER_LEVEL = 5;
     private int levelGula;
 
-    public Pesanan(Resep resep, int levelGula){
+    public Pesanan(Resep resep, int levelGula, String namaPelanggan){
         this.resep = resep;
         this.levelGula = levelGula;
+        this.namaPelanggan = namaPelanggan;
+    }
+
+    public String getNamaPelanggan(){
+        return this.namaPelanggan;
+    }
+    public void setNamaPelanggan(String nama){
+        this.namaPelanggan = nama;
     }
 
     public Resep getResep(){

@@ -3,7 +3,58 @@ import java.util.Scanner;
 public class Main {
     
     public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+
+        MesinKopi mesinKopi = new MesinKopi(1500, 1500, 1500, 15000, 100);
         
+        Resep[] resep = {
+            new Resep("A", 100, 100, 300),
+            new Resep("B", 100, 100, 300),
+            new Resep("C", 100, 100, 300),
+        };
+        
+        String namaKafe = "Cawan Pagi";
+        Kafe kafe = new Kafe(namaKafe, mesinKopi, resep);
+
+        int pilihan = 0;
+        do {
+
+            cetakPilihan(namaKafe);
+
+            System.out.printf("Pilih: ");
+            pilihan = scanner.nextInt();
+            scanner.nextLine();
+
+            if(pilihan==0){
+                System.out.println("Program dihentikan.");
+                break;
+            }
+
+            switch (pilihan) {
+                case 1:
+                    kafe.buatPesanan(scanner);
+                    break;
+                case 2:
+                    kafe.cetakAntrean(scanner);
+                    break;
+                case 3:
+                    kafe.buatKopi();
+                    break;
+                default:
+                    System.out.println("Pilihan tidak dikenal");
+                    break;
+            }
+
+        } while (pilihan!=0);
+
+        scanner.close();
+    }
+
+    private static void cetakPilihan(String namaKafe){
+        System.out.printf("[=== Cafe %s ===]\n", namaKafe);
+        System.out.printf("1. Buat Pesanan\n");
+        System.out.printf("2. Cetak Antrean\n");
+        System.out.printf("3. Buat Kopi\n");
     }
 
 

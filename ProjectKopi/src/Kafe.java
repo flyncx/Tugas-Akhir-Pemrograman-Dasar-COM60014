@@ -24,6 +24,22 @@ public class Kafe {
         this.menu = menu;
     }
 
+    // GETTER
+    public String getNama(){
+        return this.nama;
+    }
+
+    // SETTER
+    public void setNama(String namaBaru){
+        this.nama = namaBaru;
+    }
+
+
+
+    // Behaviour
+    
+
+
     public void buatPesanan(Scanner scanner){
 
         int indexAntreanPesanan = this.indexAntreanTerbaru + 1; 

@@ -33,13 +33,19 @@ public class Main {
             switch (pilihan) {
                 case 1:
                     kafe.buatPesanan(scanner);
+                    cetakKonfirmasi(scanner);
                     break;
                 case 2:
                     kafe.cetakAntrean(scanner);
+                    cetakKonfirmasi(scanner);
                     break;
                 case 3:
-                    kafe.buatKopi();
+                    kafe.buatKopi(scanner);
+                    cetakKonfirmasi(scanner);
                     break;
+                case 4:
+                    kafe.cetakLaporan();
+                    cetakKonfirmasi(scanner);
                 default:
                     System.out.println("Pilihan tidak dikenal");
                     break;
@@ -55,6 +61,12 @@ public class Main {
         System.out.printf("1. Buat Pesanan\n");
         System.out.printf("2. Cetak Antrean\n");
         System.out.printf("3. Buat Kopi\n");
+    }
+
+    private static void cetakKonfirmasi(Scanner scanner){
+        System.out.printf("\nTekan Enter untuk kembali...      ");
+        scanner.nextLine();
+        System.out.printf("\n");
     }
 
 

@@ -62,22 +62,28 @@ public class Kafe {
 
         this.antrean[indexAntreanPesanan] = pesanan;
         this.indexAntreanTerbaru = indexAntreanPesanan;
+
+        System.out.println("Pesanan berhasil dibuat");
     }
 
-    public void cetakAntrean(Scanner scanner){
+    public void cetakAntrean(){
         if(this.indexAntreanTerbaru==-1){
             System.out.println("Antrean kosong");
             return;
         }
+        
+        System.out.printf("|---------------------------------|\n");
+        System.out.printf("|-             Antrean           -|\n");
+        System.out.printf("|---------------------------------|\n");
+        System.out.printf("| No. | Nama pelanggan            |\n");
+        
 
         for (int i = 0; i < antrean.length; i++) {
             Pesanan p = this.antrean[i];
-            if(p==null) return;
-            System.out.printf("%d, Pelanggan %s memesan %s\n", i+1, p.getNamaPelanggan(), p.getResep().getNama());
+            if(p==null) break;
+            System.out.printf("| %3d | %-25s |\n", i, p.getNamaPelanggan());
         }
-
-        System.out.printf("\nTekan Enter untuk kembali...      ");
-        scanner.nextLine();
+        System.out.printf("|---------------------------------|\n");
     }
 
     private void cetakMenu(){
@@ -96,7 +102,32 @@ public class Kafe {
             return;
         }
 
-        // todo proses kopi
+        boolean mesinKopiBeroperasi = mesinKopi.getOK();
+        if(mesinKopiBeroperasi != true){
+            System.out.println("Mesin kopi perlu dibersihkan!");
+            return;
+        }
+
+        boolean statusKopi = mesinKopi.buatKopi(pesanan);
+        if(statusKopi != true){
+            System.out.println("Mesin kopi perlu di-refill!");
+            return;
+        }
+
+        System.out.printf("      )  (      \n");
+        System.out.printf("     (   ) )    \n");
+        System.out.printf("      ) ( (     \n");
+        System.out.printf("    _____)___   \n");
+        System.out.printf("   |---------|  \n");
+        System.out.printf("   |/-/-/-/-/|  \n");
+        System.out.printf("   |/-/-/-/-/|  \n");
+        System.out.printf("   |         |  \n");
+        System.out.printf("   | . . . . |  \n");
+        System.out.printf("   '_________'  \n");
+        System.out.printf("    '-------'   \n");
+
+
+        System.out.printf("Kopi %s milik %s sudah jadi!\n", pesanan.getResep().getNama(), pesanan.getNamaPelanggan());
 
 
         // misal sblm diproses antreannya itu [a,b,c,d]

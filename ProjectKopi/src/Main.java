@@ -36,7 +36,7 @@ public class Main {
                     cetakKonfirmasi(scanner);
                     break;
                 case 2:
-                    kafe.cetakAntrean(scanner);
+                    kafe.cetakAntrean();
                     cetakKonfirmasi(scanner);
                     break;
                 case 3:

@@ -76,11 +76,61 @@ public class Kafe {
 
         Pesanan pesanan = new Pesanan(resep, pilihanLevelGula, namaPelanggan);
 
-        this.antrean[indexAntreanPesanan] = pesanan;
-        this.indexAntreanTerbaru = indexAntreanPesanan;
+        boolean terbayar = this.bayarPesanan(pesanan, scanner);
+
+        if(terbayar != true){
+            System.out.println("Pesanan dibatalkan karena tidak dibayar");
+            return;
+        }
+
+        tambahPesanan(pesanan, indexAntreanPesanan);
+
+    }
+
+    private void tambahPesanan(Pesanan pesanan, int index){
+        this.antrean[index] = pesanan;
+        this.indexAntreanTerbaru = index;
 
         System.out.println("Pesanan berhasil dibuat");
     }
+
+    private boolean bayarPesanan(Pesanan pesanan, Scanner scanner){
+        System.out.printf("Silahkan bayar sejumlah Rp%d : \n", pesanan.getHarga());
+
+        System.out.println("[X][ ][ ][ ][X]");
+        System.out.println("[ ][ ][ ][ ][ ]");
+        System.out.println("[ ][ ][ ][ ][ ]");
+        System.out.println("[ ][ ][ ][ ][ ]");
+        System.out.println("[X][ ][ ][ ][ ]");
+
+        int inputPembayaran = -1; 
+        boolean tanya = true;
+        while (tanya) {
+            System.out.printf("Apakah sudah terbayar? (tidak=0/ya=1): ");
+            inputPembayaran = scanner.nextInt();
+            if(inputPembayaran==0 || inputPembayaran==1){
+                tanya = false;
+            }
+        }
+
+        // 0 artiny ga dibayar alias cancel
+        if(inputPembayaran == 0){
+            return false;
+        }
+
+        cetakBukti(pesanan);
+        return true;
+    }
+
+    private void cetakBukti(Pesanan pesanan){
+        System.out.printf("---Bukti Transaksi---\n");
+        System.out.printf("Nama: %s\n", pesanan.getNamaPelanggan());
+        System.out.printf("Kopi: %s\n", pesanan.getResep().getNama());
+        System.out.printf("Gula: %s\n", pesanan.getLevelGulaString());
+        System.out.printf("Harga: Rp%d\n", pesanan.getHarga());
+        System.out.println("---");
+        
+    }   
 
     public void cetakAntrean(){
         if(this.indexAntreanTerbaru==-1){

@@ -37,7 +37,7 @@ public class Kafe {
 
 
     // Behaviour
-    
+
 
 
     public void buatPesanan(Scanner scanner){
@@ -118,15 +118,31 @@ public class Kafe {
             return;
         }
 
-        boolean mesinKopiBeroperasi = mesinKopi.getOK();
-        if(mesinKopiBeroperasi != true){
+        boolean mkPerluMaintenance = mesinKopi.perluMaintenance();
+        if(mkPerluMaintenance == true){
             System.out.println("Mesin kopi perlu dibersihkan!");
             return;
         }
 
-        boolean statusKopi = mesinKopi.buatKopi(pesanan);
-        if(statusKopi != true){
-            System.out.println("Mesin kopi perlu di-refill!");
+        int statusKopi = mesinKopi.buatKopi(pesanan);
+        System.out.printf("STATUS KOPI === %d\n", statusKopi);
+        if(statusKopi !=0){
+            String kosong = "";
+            switch (statusKopi) {
+                case 2:
+                    kosong = "GULA";
+                    break;
+                case 3:
+                    kosong = "SUSU";
+                    break;
+                case 4:
+                    kosong = "KOPI";
+                    break;
+                case 5:
+                    kosong = "AIR";
+                    break;
+            }
+            System.out.printf("%s perlu diisi ulang!", kosong);
             return;
         }
 

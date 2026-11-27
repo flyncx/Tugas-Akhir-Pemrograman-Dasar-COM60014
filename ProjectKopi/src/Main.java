@@ -5,7 +5,13 @@ public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        MesinKopi mesinKopi = new MesinKopi(1500, 1500, 1500, 15000, 100);
+        MesinKopi mesinKopi = new MesinKopi(
+            1200,      // jumlah kopi awal = 1.2 kg
+            790 , // jumlah susu awal = 790 ml
+            1500,      // jumlah susu awal = 1.5 kg
+            1800,  // jumlah air awal  = 1.8 kg atau 1.8 liter
+            10  // jumlah siklus awal = 10 (jika nol perlu perawatan)  
+        );
         
         Resep[] resep = {
             new Resep("A", 100, 100, 300),

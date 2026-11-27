@@ -61,7 +61,7 @@ public class Kafe {
 
         System.out.printf("Masukkan menu: ");
         int pilihanMenu = scanner.nextInt();
-        boolean pilihanMenuValid = 1<=pilihanMenu && pilihanMenu<this.menu.length;
+        boolean pilihanMenuValid = 1<=pilihanMenu && pilihanMenu<=this.menu.length;
 
         if(pilihanMenuValid != true) return;
 
